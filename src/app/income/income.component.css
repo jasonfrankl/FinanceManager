@@ -1,0 +1,45 @@
+/* General Container Styling */
+.container {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Styling */
+h1 {
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  color: #343a40;
+}
+
+/* Income List Item Styling */
+.list-group-item.income-item {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+  .list-group-item.income-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+
+/* Income Details Styling */
+.income-details h4 {
+  font-family: 'Arial', sans-serif;
+  color: #495057;
+}
+
+.income-details p {
+  font-family: 'Arial', sans-serif;
+  color: #6c757d;
+}
+
+/* Amount Styling */
+.text-end h5 {
+  font-family: 'Arial', sans-serif;
+  color: #28a745;
+  font-weight: bold;
+}

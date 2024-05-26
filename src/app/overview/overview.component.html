@@ -1,0 +1,31 @@
+
+<div>
+    <!-- Expenses Entries Column -->
+    <div class="col-md-4">
+      <h1>Expense Entries</h1>
+      <ul class="list-group">
+        <ng-container *ngFor="let entry of financialEntries">
+          <li class="list-group-item" *ngIf="entry.type === 'expense'">
+            <h3>{{ entry.name }}</h3>
+            <p>Amount: {{ entry.amount | currency }}</p>
+            <p>Description: {{ entry.description }}</p>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+
+    <!-- Debt Entries Column -->
+    <div class="col-md-4">
+      <h1>Debt Entries</h1>
+      <ul class="list-group">
+        <ng-container *ngFor="let entry of financialEntries">
+          <li class="list-group-item" *ngIf="entry.type === 'debt'">
+            <h3>{{ entry.name }}</h3>
+            <p>Amount: {{ entry.amount | currency }}</p>
+            <p>Description: {{ entry.description }}</p>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+
