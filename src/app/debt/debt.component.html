@@ -17,6 +17,26 @@
           </li>
         </ng-container>
       </ul>
+      <button class="btn btn-primary mt-4" (click)="showForm = !showForm">Add Entry</button>
+
+      <div *ngIf="showForm" class="mt-4">
+        <h2>Add New Debt Entry</h2>
+        <form (ngSubmit)="addNewEntry()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input id="name" class="form-control" [(ngModel)]="newEntry.name" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input id="amount" class="form-control" type="number" [(ngModel)]="newEntry.amount" name="amount" required>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input id="description" class="form-control" [(ngModel)]="newEntry.description" name="description" required>
+          </div>
+          <button type="submit" class="btn btn-success">Add</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
