@@ -20,8 +20,9 @@ import { RouterModule } from '@angular/router';
 })
 export class DebtComponent {
   financialEntries: FinancialEntry[] = [];
-  showForm: boolean = false;
+  totalDebt: number = 0;
 
+  showForm: boolean = false;
   newEntry: FinancialEntry = {
     id: 0,
     type: 'debt',
@@ -38,8 +39,22 @@ export class DebtComponent {
 
   ngOnInit(): void {
     this.getEntries();
+    for (let entries of this.financialEntries) {
+      if (entries.type == 'debt') {
+        this.addToTotalDebt(entries.amount);
+      }
+    }
   }
 
+  getTotalDebt(): number {
+    this.totalDebt = 0;
+    
+    return this.totalDebt;
+  }
+
+  addToTotalDebt(amount: number): void {
+    this.totalDebt += amount;
+  }
   addNewEntry(): void {
     this.newEntry.id = this.financialEntries.length + 1;
     this.financialEntries.push(this.newEntry);

@@ -2,6 +2,9 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <h1 class="text-center mb-4">Debt Entries</h1>
+      <div class="text-center mb-4">
+        <h2>Total Debt: <span class="text-danger">{{totalDebt | currency}}</span></h2>
+      </div>
       <ul class="list-group">
         <ng-container *ngFor="let entry of financialEntries">
           <li class="list-group-item debt-item mb-3" *ngIf="entry.type === 'debt'">
@@ -34,7 +37,7 @@
             <label for="description" class="form-label">Description</label>
             <input id="description" class="form-control" [(ngModel)]="newEntry.description" name="description" required>
           </div>
-          <button type="submit" class="btn btn-success">Add</button>
+          <button type="submit" class="btn btn-success" (click)="addToTotalDebt(newEntry.amount)">Add</button>
         </form>
       </div>
     </div>

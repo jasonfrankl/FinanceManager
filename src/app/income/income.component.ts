@@ -20,7 +20,7 @@ import { RouterModule } from '@angular/router';
 export class IncomeComponent implements OnInit {
   financialEntries: FinancialEntry[] = [];
   showForm: boolean = false;
-
+  totalIncome: number = 0;
   newEntry: FinancialEntry = {
     id: 0,
     type: 'income',
@@ -37,8 +37,20 @@ export class IncomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEntries();
+    for (let entry of this.financialEntries) {
+      if (entry.type == 'income') {
+        this.totalIncome += entry.amount;
+      }
+    }
   }
 
+  addToIncome(amount: number): void {
+    this.totalIncome += amount;
+  }
+
+  getIncome(): number {
+    return this.totalIncome;
+  }
   addNewEntry(): void {
     this.newEntry.id = this.financialEntries.length + 1;
     this.financialEntries.push(this.newEntry);

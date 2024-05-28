@@ -22,6 +22,8 @@ export class ExpenseComponent {
   financialEntries: FinancialEntry[] = [];
   showForm: boolean = false;
 
+  totalExpense: number = 0;
+
   newEntry: FinancialEntry = {
     id: 0,
     type: 'expense',
@@ -36,8 +38,21 @@ export class ExpenseComponent {
     this.overviewService.getEntries().subscribe(financialEntries => this.financialEntries = financialEntries);
   }
 
+
+  getTotalExpense(): number {
+    return this.totalExpense;
+  }
   ngOnInit(): void {
     this.getEntries();
+    for (let entry of this.financialEntries) {
+      if (entry.type == 'expense') {
+        this.totalExpense += entry.amount;
+      }
+    }
+  }
+
+  addToExpense(amount: number): void {
+    this.totalExpense += amount;
   }
 
   addNewEntry(): void {

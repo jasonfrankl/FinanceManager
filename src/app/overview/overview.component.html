@@ -1,31 +1,29 @@
-
-<div>
-    <!-- Expenses Entries Column -->
+<div class="container mt-4">
+  <h1 class="text-center mb-4">Overview</h1>
+  <div class="row">
     <div class="col-md-4">
-      <h1>Expense Entries</h1>
-      <ul class="list-group">
-        <ng-container *ngFor="let entry of financialEntries">
-          <li class="list-group-item" *ngIf="entry.type === 'expense'">
-            <h3>{{ entry.name }}</h3>
-            <p>Amount: {{ entry.amount | currency }}</p>
-            <p>Description: {{ entry.description }}</p>
-          </li>
-        </ng-container>
-      </ul>
+      <div class="card text-white bg-success mb-3">
+        <div class="card-header">Income</div>
+        <div class="card-body">
+          <h2 class="card-title">{{income | currency}}</h2>
+        </div>
+      </div>
     </div>
-
-    <!-- Debt Entries Column -->
     <div class="col-md-4">
-      <h1>Debt Entries</h1>
-      <ul class="list-group">
-        <ng-container *ngFor="let entry of financialEntries">
-          <li class="list-group-item" *ngIf="entry.type === 'debt'">
-            <h3>{{ entry.name }}</h3>
-            <p>Amount: {{ entry.amount | currency }}</p>
-            <p>Description: {{ entry.description }}</p>
-          </li>
-        </ng-container>
-      </ul>
+      <div class="card text-white bg-danger mb-3">
+        <div class="card-header">Expense</div>
+        <div class="card-body">
+          <h2 class="card-title">{{expense | currency}}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-warning mb-3">
+        <div class="card-header">Debt</div>
+        <div class="card-body">
+          <h2 class="card-title">{{debt | currency}}</h2>
+        </div>
+      </div>
     </div>
   </div>
-
+</div>

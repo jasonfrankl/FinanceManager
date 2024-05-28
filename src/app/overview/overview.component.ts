@@ -17,12 +17,40 @@ import { NgIf, NgFor, UpperCasePipe } from '@angular/common';
 })
 export class OverviewComponent {
   financialEntries: FinancialEntry[] = [];
+
+  income: number = 0;
+  expense: number = 0;
+  debt: number = 0;
+
   constructor(private overviewService: OverviewService) { }
   getEntries(): void {
     this.overviewService.getEntries().subscribe(financialEntries => this.financialEntries = financialEntries);
   }
 
   ngOnInit(): void {
-    this.getEntries();
+      this.getEntries();
+      for(let entry of this.financialEntries) {
+        if (entry.type == 'income') {
+          this.income += entry.amount;
+        } else if (entry.type == 'expense') {
+          this.expense += entry.amount;
+        }
+        else if (entry.type == 'debt') {
+          this.debt += entry.amount;
+        }
+
+    }
   }
+  
+
+  getIncome(): number {
+    return this.income;
+  }
+  getExpense(): number {
+    return this.expense;
+  }
+  getDebt(): number {
+    return this.debt;
+  }
+
 }
